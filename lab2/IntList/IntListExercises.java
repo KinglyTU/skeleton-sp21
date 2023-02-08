@@ -35,7 +35,9 @@ public class IntListExercises {
         }
     }
 
-    /** Returns the max value in the IntList starting at L. */
+    /**
+     * Returns the max value in the IntList starting at L.
+     */
     public static int max(IntList L) {
         int max = L.first;
         IntList p = L.rest;
@@ -48,12 +50,13 @@ public class IntListExercises {
         return max;
     }
 
-    /** Returns true if the last digit of x is equal to
-     *  the first digit of x.
+    /**
+     * Returns true if the last digit of x is equal to
+     * the first digit of x.
      */
     public static boolean firstDigitEqualsLastDigit(int x) {
         int lastDigit = x % 10;
-        while (x > 10) {
+        while (x >= 10) {
             x = x / 10;
         }
         int firstDigit = x;
@@ -67,23 +70,24 @@ public class IntListExercises {
      * @param lst IntList from Lecture
      * @return True if there was an update to the list
      */
-    static boolean hasPrime =false;
+
+
     public static boolean squarePrimes(IntList lst) {
-
-        // Base Case: we have reached the end of the list
-        if (lst == null) {
-            if (hasPrime) return true;
-            else return false;
-        }
-
-        boolean currElemIsPrime = Primes.isPrime(lst.first);
-
-        if (currElemIsPrime) {
-            lst.first *= lst.first;
-            hasPrime = true;
-        }
-
-         return squarePrimes(lst.rest);
+       return squarePrimesHelper(lst,false);
 
     }
+
+    private static boolean squarePrimesHelper(IntList lst, boolean squared){
+        // Base Case: we have reached the end of the list
+        if (lst == null) {
+            return squared;
+        }
+        boolean currElemIsPrime = Primes.isPrime(lst.first);
+        if (currElemIsPrime) {
+            lst.first *= lst.first;
+            squared = true;
+        }
+        return squarePrimesHelper(lst.rest,squared) ;
+    }
+
 }
