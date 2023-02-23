@@ -1,5 +1,8 @@
 package IntList;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
+
 public class IntListExercises {
 
     /**
@@ -56,7 +59,7 @@ public class IntListExercises {
      */
     public static boolean firstDigitEqualsLastDigit(int x) {
         int lastDigit = x % 10;
-        while (x >= 10) {
+        while (x > 10) {
             x = x / 10;
         }
         int firstDigit = x;
@@ -73,11 +76,11 @@ public class IntListExercises {
 
 
     public static boolean squarePrimes(IntList lst) {
-       return squarePrimesHelper(lst,false);
+        return squarePrimesHelper(lst, false);
 
     }
 
-    private static boolean squarePrimesHelper(IntList lst, boolean squared){
+    private static boolean squarePrimesHelper(IntList lst, boolean squared) {
         // Base Case: we have reached the end of the list
         if (lst == null) {
             return squared;
@@ -87,7 +90,8 @@ public class IntListExercises {
             lst.first *= lst.first;
             squared = true;
         }
-        return squarePrimesHelper(lst.rest,squared) ;
+        return squarePrimesHelper(lst.rest, squared);
     }
+
 
 }

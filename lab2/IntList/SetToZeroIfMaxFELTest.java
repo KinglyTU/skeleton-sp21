@@ -8,9 +8,9 @@ public class SetToZeroIfMaxFELTest {
 
     @Test
     public void testZeroOutFELMaxes1() {
-        IntList L = IntList.of(1, 22, 15);
+        IntList L = IntList.of(10, 2, 3);
         IntListExercises.setToZeroIfMaxFEL(L);
-        assertEquals("0 -> 0 -> 15", L.toString());
+        assertEquals("10 -> 0 -> 0", L.toString());
     }
 
     @Test
