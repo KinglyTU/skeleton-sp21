@@ -33,27 +33,30 @@ public class TestBuggyAList {
     @Test
     public void randomizedTest() {
         AListNoResizing<Integer> L = new AListNoResizing<>();
+        BuggyAList<Integer> broken = new BuggyAList<>();
 
-        int N = 500;
+        int N = 5000;
         for (int i = 0; i < N; i += 1) {
             int operationNumber = StdRandom.uniform(0, 4);
             if (operationNumber == 0) {
                 // addLast
                 int randVal = StdRandom.uniform(0, 100);
                 L.addLast(randVal);
+                broken.addLast(randVal);
                 System.out.println("addLast(" + randVal + ")");
             } else if (operationNumber == 1) {
                 // size
                 int size = L.size();
-                System.out.println("size: " + size);
+                int brokenSize = broken.size();
+                assertEquals(size, brokenSize);
             } else if (operationNumber == 2 && L.size() != 0) {
                 int last = L.getLast();
-                System.out.println("Last value is " + last);
+                int brokenLast = broken.getLast();
+                assertEquals(last, brokenLast);
 
             } else if (operationNumber == 3 && L.size() != 0) {
-                int last = L.getLast();
                 L.removeLast();
-                System.out.println("last value " + last + " has been removed.");
+                broken.removeLast();
 
             }
         }
