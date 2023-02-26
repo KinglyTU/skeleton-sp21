@@ -66,6 +66,10 @@ public class ArrayDeque<T> {
             temp = items[nextFirst + 1];
             items[nextFirst + 1] = null;
         }
+        nextFirst++;
+        if (nextFirst == capacity) {
+            nextFirst = 0;
+        }
         size--;
         return temp;
     }
@@ -75,12 +79,17 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
+
         if ((nextLast - 1) < 0) {
             temp = items[capacity - 1];
             items[capacity - 1] = null;
         } else {
             temp = items[nextLast - 1];
             items[nextLast - 1] = null;
+        }
+        nextLast--;
+        if (nextLast < 0) {
+            nextLast = capacity - 1;
         }
         size--;
         return temp;

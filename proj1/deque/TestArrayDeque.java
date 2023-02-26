@@ -59,20 +59,42 @@ public class TestArrayDeque {
 
 
         ArrayDeque<Integer> lld1 = new ArrayDeque<>();
-        lld1.addFirst(3);
-        lld1.addFirst(2);
+        lld1.addLast(3);
+        lld1.addLast(3);
+        lld1.addLast(3);
+        lld1.addLast(3);
+        lld1.addLast(3);
+        lld1.addLast(3);
+        lld1.addLast(3);
+        lld1.addLast(3);
 
         lld1.removeLast();
-        lld1.removeFirst();
         lld1.removeLast();
-        lld1.removeFirst();
+        lld1.removeLast();
+        lld1.removeLast();
+        lld1.removeLast();
+        lld1.removeLast();
+        lld1.removeLast();
+        lld1.removeLast();
+
+
+
+        lld1.addFirst(3);
+        lld1.addFirst(2);
+        lld1.addFirst(2);
+        lld1.addFirst(2);
+        lld1.addFirst(2);
+        lld1.addFirst(2);
+        lld1.addFirst(2);
+        lld1.addFirst(2);
+
 
         int size = lld1.size();
         String errorMsg = "  Bad size returned when removing from empty deque.\n";
         errorMsg += "  student size() returned " + size + "\n";
         errorMsg += "  actual size() returned 0\n";
 
-        assertEquals(errorMsg, 0, size);
+        assertEquals(errorMsg, 8, size);
     }
 
     @Test
