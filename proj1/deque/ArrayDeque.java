@@ -17,7 +17,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         nextLast = 1;
     }
 
-    public void resizeUp() {
+    private void resizeUp() {
         T[] itemsResized = (T[]) new Object[capacity * 2];
         items = copyArrayInOrder(itemsResized, items);
         capacity *= 2;
@@ -25,13 +25,16 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         nextLast = size;
     }
 
-    public void resizeDown() {
+    private void resizeDown() {
         T[] itemsResized = (T[]) new Object[capacity / 2];
         items = copyArrayInOrder(itemsResized, items);
         capacity /= 2;
+        nextFirst = capacity - 1;
+        nextLast = size;
+
     }
 
-    public T[] copyArrayInOrder(T[] itemsResized, T[] items) {
+    private T[] copyArrayInOrder(T[] itemsResized, T[] items) {
         int j = 0;
         for (int i = nextFirst + 1; i < size + nextFirst + 1; i++) {
             itemsResized[j] = items[i % capacity];
@@ -158,7 +161,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private class ArrayDequeIterator implements Iterator<T> {
         private int wizPos;
 
-        public ArrayDequeIterator() {
+        ArrayDequeIterator() {
             wizPos = 0;
         }
 
@@ -192,7 +195,9 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         for (int i = 0; i < size; i++) {
             if (o.items[i].equals(this.items[i])) {
                 continue;
-            } else return false;
+            } else {
+                return false;
+            }
         }
         return true;
 

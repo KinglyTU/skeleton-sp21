@@ -1,8 +1,8 @@
 package deque;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 
+import static org.junit.Assert.*;
 
 
 public class TestArrayDeque {
@@ -71,7 +71,7 @@ public class TestArrayDeque {
 
         int size = lld1.size();
         String errorMsg = "  Bad size returned when removing from empty deque.\n";
-         errorMsg += "  student size() returned " + size + "\n";
+        errorMsg += "  student size() returned " + size + "\n";
         errorMsg += "  actual size() returned 0\n";
 
         assertEquals(errorMsg, 2, size);
@@ -81,8 +81,8 @@ public class TestArrayDeque {
     /* Check if you can create LinkedListDeques with different parameterized types*/
     public void multipleParamTest() {
 
-        ArrayDeque<String>  lld1 = new ArrayDeque<String>();
-        ArrayDeque<Double>  lld2 = new ArrayDeque<Double>();
+        ArrayDeque<String> lld1 = new ArrayDeque<String>();
+        ArrayDeque<Double> lld2 = new ArrayDeque<Double>();
         ArrayDeque<Boolean> lld3 = new ArrayDeque<Boolean>();
 
         lld1.addFirst("string");
@@ -103,8 +103,10 @@ public class TestArrayDeque {
 
         boolean passed1 = false;
         boolean passed2 = false;
-        assertEquals("Should return null when removeFirst is called on an empty Deque,", null, lld1.removeFirst());
-        assertEquals("Should return null when removeLast is called on an empty Deque,", null, lld1.removeLast());
+        assertEquals("Should return null when removeFirst is called on an empty Deque,",
+                null, lld1.removeFirst());
+        assertEquals("Should return null when removeLast is called on an empty Deque,",
+                null, lld1.removeLast());
 
     }
 
@@ -125,4 +127,16 @@ public class TestArrayDeque {
         }
 
     }
+
+    @Test
+    public void removeFirstTest(){
+        ArrayDeque<Integer> a = new ArrayDeque<>();
+        for (int i = 0; i < 1000; i++) {
+            a.addLast(10);
+        }
+        for (int i = 0; i < 1000; i++) {
+            a.removeFirst();
+        }
+    }
+
 }
