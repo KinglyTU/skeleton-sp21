@@ -59,42 +59,22 @@ public class TestArrayDeque {
 
 
         ArrayDeque<Integer> lld1 = new ArrayDeque<>();
-        lld1.addLast(3);
-        lld1.addLast(3);
-        lld1.addLast(3);
-        lld1.addLast(3);
-        lld1.addLast(3);
-        lld1.addLast(3);
-        lld1.addLast(3);
-        lld1.addLast(3);
+        for (int i = 0; i < 17; i++) {
+            lld1.addLast(i);
+        }
+        for (int i = 0; i < 15; i++) {
+            lld1.removeLast();
+        }
 
-        lld1.removeLast();
-        lld1.removeLast();
-        lld1.removeLast();
-        lld1.removeLast();
-        lld1.removeLast();
-        lld1.removeLast();
-        lld1.removeLast();
-        lld1.removeLast();
-
-
-
-        lld1.addFirst(3);
-        lld1.addFirst(2);
-        lld1.addFirst(2);
-        lld1.addFirst(2);
-        lld1.addFirst(2);
-        lld1.addFirst(2);
-        lld1.addFirst(2);
-        lld1.addFirst(2);
+        System.out.println(lld1.get(0));
 
 
         int size = lld1.size();
         String errorMsg = "  Bad size returned when removing from empty deque.\n";
-        errorMsg += "  student size() returned " + size + "\n";
+         errorMsg += "  student size() returned " + size + "\n";
         errorMsg += "  actual size() returned 0\n";
 
-        assertEquals(errorMsg, 8, size);
+        assertEquals(errorMsg, 2, size);
     }
 
     @Test
@@ -128,9 +108,8 @@ public class TestArrayDeque {
 
     }
 
-/*    @Test
-    *//* Add large number of elements to deque; check if order is correct. *//*
-    public void bigLLDequeTest() {
+    @Test
+    public void bigArrayDequeTest() {
 
         ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         for (int i = 0; i < 1000000; i++) {
@@ -145,5 +124,5 @@ public class TestArrayDeque {
             assertEquals("Should have the same value", i, (double) lld1.removeLast(), 0.0);
         }
 
-    }*/
+    }
 }
